@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Introduction to Quick Look Extensions}
+\author{Jane Developer}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+
+A Quick Look extension allows macOS to preview files in Finder.
+
+\begin{equation}
+  E = mc^2
+\end{equation}
+
+\subsection{Features}
+\begin{itemize}
+  \item Fast rendering
+  \item Syntax highlighting
+  \item Support for multiple languages
+\end{itemize}
+
+\end{document}

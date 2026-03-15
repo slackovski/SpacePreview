@@ -1,0 +1,23 @@
+{
+  "name": "spacepreview",
+  "version": "1.0.0",
+  "description": "Quick Look plugin for developer files",
+  "author": "SpacePreview Contributors",
+  "license": "MIT",
+  "scripts": {
+    "build": "make build",
+    "install": "make install",
+    "clean": "make clean"
+  },
+  "config": {
+    "supportedExtensions": [
+      "ts", "tsx", "js", "vue", "go", "swift",
+      "java", "kt", "rs", "py", "rb", "php",
+      "sh", "yaml", "yml", "json", "toml", "md"
+    ],
+    "theme": {
+      "light": "atom-one-light",
+      "dark": "atom-one-dark"
+    }
+  }
+}

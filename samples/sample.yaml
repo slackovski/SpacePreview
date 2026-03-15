@@ -1,0 +1,27 @@
+name: SpacePreview CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download dependencies
+        run: make deps
+
+      - name: Build
+        run: make build
+
+      - name: Verify extension binary type
+        run: |
+          file build/SpacePreview.app/Contents/PlugIns/SpacePreviewQL.appex/Contents/MacOS/SpacePreviewQL \
+            | grep -q "executable"
+
+      - name: Check codesign
+        run: codesign -vvv build/SpacePreview.app

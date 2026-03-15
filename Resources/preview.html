@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="color-scheme" content="light dark">
+    <title>{{FILE_NAME}}</title>
+
+    <!-- highlight.js light theme (default) -->
+    <style id="hl-light">{{HIGHLIGHT_LIGHT_CSS}}</style>
+    <!-- highlight.js dark theme (activated by JS when system is in dark mode) -->
+    <style id="hl-dark" media="not all">{{HIGHLIGHT_DARK_CSS}}</style>
+    <!-- Custom layout styles -->
+    <style>{{STYLE_CSS}}</style>
+</head>
+<body data-language="{{LANGUAGE}}"
+      data-is-markdown="{{IS_MARKDOWN}}">
+
+    <header class="file-header">
+        <span class="file-name">{{FILE_NAME}}</span>
+        <span class="lang-badge">{{LANG_DISPLAY}}</span>
+    </header>
+
+    <div id="content">
+        <pre id="code-pre"><code id="code" class="language-{{LANGUAGE}}">{{CODE_CONTENT}}</code></pre>
+    </div>
+
+    <!-- Dependencies inlined from plugin bundle (no network) -->
+    <script>{{MARKED_JS}}</script>
+    <script>{{HIGHLIGHT_JS}}</script>
+
+    <script>
+    (function () {
+        "use strict";
+
+        // ── Theme management ──────────────────────────────────────────────
+        var hlLight = document.getElementById("hl-light");
+        var hlDark  = document.getElementById("hl-dark");
+
+        function applyTheme(dark) {
+            hlDark.media  = dark ? "all" : "not all";
+            hlLight.media = dark ? "not all" : "all";
+            document.body.setAttribute("data-theme", dark ? "dark" : "light");
+        }
+
+        var mq = window.matchMedia("(prefers-color-scheme: dark)");
+        applyTheme(mq.matches);
+
+        // Support both modern and older Safari event APIs.
+        if (mq.addEventListener) {
+            mq.addEventListener("change", function (e) { applyTheme(e.matches); });
+        } else if (mq.addListener) {
+            mq.addListener(function (e) { applyTheme(e.matches); });
+        }
+
+        // ── Rendering ─────────────────────────────────────────────────────
+        var isMarkdown = document.body.dataset.isMarkdown === "true";
+        var language   = document.body.dataset.language;
+        var pre        = document.getElementById("code-pre");
+        var codeEl     = document.getElementById("code");
+        var container  = document.getElementById("content");
+        var rawText    = codeEl.textContent;   // browser decodes HTML entities
+
+        if (isMarkdown) {
+            // ── Markdown: render to HTML with marked.js ──────────────────
+            var markedOptions = { gfm: true, breaks: false };
+            var rendered = marked.parse(rawText, markedOptions);
+            container.innerHTML = '<div class="markdown-body">' + rendered + '</div>';
+
+            // Syntax-highlight fenced code blocks inside the markdown.
+            container.querySelectorAll("pre code").forEach(function (el) {
+                hljs.highlightElement(el);
+            });
+
+        } else {
+            // ── Code: syntax highlight + line numbers ────────────────────
+            if (language !== "plaintext") {
+                hljs.highlightElement(codeEl);
+            }
+
+            // Build a line-numbers column that matches the code height.
+            var lineCount = rawText.split("\n").length;
+            // Remove trailing empty line that appears when the file ends with \n.
+            if (rawText.endsWith("\n")) { lineCount -= 1; }
+            if (lineCount < 1) { lineCount = 1; }
+
+            var nums = document.createElement("div");
+            nums.className = "line-numbers";
+            var numbersHTML = "";
+            for (var i = 1; i <= lineCount; i++) {
+                numbersHTML += "<span>" + i + "</span>";
+            }
+            nums.innerHTML = numbersHTML;
+            pre.insertBefore(nums, codeEl);
+        }
+    })();
+    </script>
+</body>
+</html>

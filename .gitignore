@@ -1,0 +1,39 @@
+# Xcode build artifacts
+build/
+*.pbxproj
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+.xcodeproj/
+
+# macOS
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+*.iml
+
+# Swift Package Manager
+.build/
+*.swiftpm/
+.swiftpm/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+.env.local
+
+# IDE
+.vscode/
+*.code-workspace
+
+# Distribution artifacts (optional - remove if you want to track builds)
+*.dmg
+*.app/
+
+# Dependencies (already committed as part of resources)
+# Resources/highlight.min.js - already tracked
+# Resources/marked.min.js - already tracked
+# Resources/atom-one-*.min.css - already tracked

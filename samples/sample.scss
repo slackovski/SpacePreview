@@ -1,0 +1,31 @@
+$primary: #007aff;
+$radius: 8px;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  @include flex-center;
+  padding: 8px 16px;
+  background: $primary;
+  border-radius: $radius;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: darken($primary, 10%);
+  }
+
+  &--outline {
+    background: transparent;
+    border: 2px solid $primary;
+    color: $primary;
+  }
+
+  &--sm { padding: 4px 10px; font-size: 0.85em; }
+  &--lg { padding: 12px 24px; font-size: 1.1em; }
+}

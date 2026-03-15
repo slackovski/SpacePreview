@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>com.spacepreview</string>
+
+    <key>CFBundleName</key>
+    <string>SpacePreview</string>
+
+    <key>CFBundleDisplayName</key>
+    <string>SpacePreview</string>
+
+    <key>CFBundleExecutable</key>
+    <string>SpacePreview</string>
+
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+
+    <key>CFBundleVersion</key>
+    <string>1.0.0</string>
+
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+
+    <key>LSMinimumSystemVersion</key>
+    <string>13.0</string>
+
+    <!-- Run as a background-only app (no Dock icon, no menu bar) -->
+    <key>LSUIElement</key>
+    <true/>
+
+    <key>NSHumanReadableCopyright</key>
+    <string>SpacePreview Quick Look Extension</string>
+
+    <!-- ── App-level UTI export: claim .ts / .tsx as TypeScript ──────────────
+         Declaring this in the container app gives it higher LaunchServices
+         priority than the extension-level declaration; the goal is to shadow
+         macOS's built-in public.mpeg-2-transport-stream binding for .ts. -->
+    <key>UTExportedTypeDeclarations</key>
+    <array>
+        <dict>
+            <key>UTTypeIdentifier</key>
+            <string>public.typescript-source</string>
+            <key>UTTypeDescription</key>
+            <string>TypeScript Source File</string>
+            <key>UTTypeConformsTo</key>
+            <array>
+                <string>public.source-code</string>
+            </array>
+            <key>UTTypeTagSpecification</key>
+            <dict>
+                <key>public.filename-extension</key>
+                <array>
+                    <string>ts</string>
+                    <string>tsx</string>
+                    <string>mts</string>
+                    <string>cts</string>
+                </array>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

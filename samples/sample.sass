@@ -1,0 +1,25 @@
+$primary-color: #3498db
+$secondary-color: #2ecc71
+$border-radius: 4px
+$transition-speed: 0.3s
+
+.button
+  background-color: $primary-color
+  color: white
+  padding: 10px 20px
+  border-radius: $border-radius
+  border: none
+  cursor: pointer
+  transition: background-color $transition-speed ease
+
+  &:hover
+    background-color: $secondary-color
+
+  &.disabled
+    opacity: 0.5
+    cursor: not-allowed
+
+.container
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 20px

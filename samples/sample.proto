@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package user.v1;
+
+option go_package = "github.com/example/spacepreview/gen/user/v1";
+
+import "google/protobuf/timestamp.proto";
+
+enum Role {
+  ROLE_UNSPECIFIED = 0;
+  ROLE_ADMIN       = 1;
+  ROLE_EDITOR      = 2;
+  ROLE_VIEWER      = 3;
+}
+
+message User {
+  int64                      id         = 1;
+  string                     name       = 2;
+  string                     email      = 3;
+  Role                       role       = 4;
+  google.protobuf.Timestamp  created_at = 5;
+}
+
+message GetUserRequest  { int64 id = 1; }
+message GetUserResponse { User  user = 1; }
+
+message ListUsersRequest {
+  Role   role   = 1;
+  int32  limit  = 2;
+  int32  offset = 3;
+}
+message ListUsersResponse { repeated User users = 1; }
+
+service UserService {
+  rpc GetUser   (GetUserRequest)   returns (GetUserResponse);
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+}

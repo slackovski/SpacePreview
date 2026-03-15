@@ -1,0 +1,15 @@
+1
+00:00:00,000 --> 00:00:03,000
+Welcome to SpacePreview
+
+2
+00:00:03,500 --> 00:00:07,000
+A Quick Look extension for syntax highlighting
+
+3
+00:00:07,500 --> 00:00:10,000
+Press Space in Finder to preview your code
+
+4
+00:00:10,500 --> 00:00:14,000
+Supporting 40+ programming languages
