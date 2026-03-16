@@ -7,36 +7,65 @@ A macOS Quick Look extension that renders developer files with syntax highlighti
 
 ## Supported file types
 
+### Programming Languages (63+)
+
 | Category | Extensions |
 |---|---|
-| JavaScript | `.js` `.mjs` |
+| JavaScript | `.js` `.mjs` `.cjs` |
 | TypeScript | `.tsx` `.cts` |
 | Go | `.go` |
 | Java | `.java` |
 | Kotlin | `.kt` `.kts` |
 | Rust | `.rs` |
 | PHP | `.php` |
-| Python | `.py` |
+| Python | `.py` `.pyw` |
 | Ruby | `.rb` |
-| Shell | `.sh` `.bash` |
+| Shell | `.sh` `.bash` `.zsh` |
 | Swift / ObjC | `.swift` `.m` `.mm` |
-| C / C++ | `.c` `.h` `.cpp` `.cc` |
+| C / C++ | `.c` `.h` `.cc` `.cpp` `.cxx` `.hh` |
 | Vue | `.vue` |
-| CSS / SCSS | `.css` `.scss` `.sass` |
-| HTML / XML | `.html` `.xml` |
-| JSON | `.json` |
+| CSS / SCSS / Less | `.css` `.scss` `.sass` `.less` |
+| HTML / XML | `.html` `.htm` `.xml` `.svg` `.plist` |
+| Dart | `.dart` |
+| Scala | `.scala` `.sc` |
+| Elixir | `.ex` `.exs` |
+
+### Data & Configuration
+
+| Category | Extensions |
+|---|---|
+| JSON | `.json` `.jsonc` |
 | YAML | `.yaml` `.yml` |
 | TOML | `.toml` |
+| INI / Config | `.ini` `.cfg` `.conf` |
 | SQL | `.sql` |
 | GraphQL | `.graphql` `.gql` |
 | Protobuf | `.proto` |
+| Lua | `.lua` |
+| R | `.r` |
+
+### DevOps & Infrastructure
+
+| Category | Extensions |
+|---|---|
 | Terraform / HCL | `.tf` `.tfvars` `.hcl` |
 | Dockerfile | `.dockerfile` |
 | Makefile | `.makefile` `.mk` |
+| Gradle | `.gradle` |
+| Jenkinsfile | `Jenkinsfile` |
+| Vagrantfile | `Vagrantfile` |
+| Gemfile / Podfile | `Gemfile` `Podfile` `.gemfile` `Brewfile` `Fastfile` |
+
+### Subtitles & Text
+
+| Category | Extensions |
+|---|---|
+| SRT Subtitle | `.srt` |
+| ASS/SSA Subtitle | `.ass` `.ssa` |
 | Markdown | `.md` `.markdown` *(rendered as HTML)* |
-| Lua | `.lua` |
-| Dart | `.dart` |
-| Scala | `.scala` `.sc` |
+| reStructuredText | `.rst` |
+| LaTeX | `.tex` `.latex` |
+| Environment | `.env` `.env.example` `.env.local` `.env.production` `.env.staging` `.env.development` |
 
 ## Features
 
@@ -85,8 +114,13 @@ After installation, open **Finder**, select a supported file, and press **Space*
 ## Known limitations
 
 The following file types are **not currently supported** for preview:
+- **`.mdown`, `.mkdn`, `.mkd`** — Markdown variants. Use `.md` or `.markdown` instead.
+- **`.rmd`** — R Markdown files. Use plain `.md` for preview.
+- **`.qmd`** — Quarto documents. Use plain `.md` for preview.
+- **`.csv`, `.tsv`, `.tab`** — Data files (CSV/TSV/TAB). Use dedicated spreadsheet tools for better viewing.
+- **`.ipynb`** — Jupyter Notebook files. Use Jupyter or VS Code for proper notebook preview.
 - **`.ts`** — Plain TypeScript files. Use `.tsx` or `.cts` instead.
-- **`.jsx`** — JSX files (use plain `.js` or `.tsx`)
+- **`.jsx`** — JSX files. Use plain `.js` or `.tsx` instead.
 - **`.mts`** — TypeScript module files. Use `.tsx` or `.cts` instead.
 - **`.cs`** — C# files
 - **`.vtt`** — WebVTT subtitle files

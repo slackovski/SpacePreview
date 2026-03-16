@@ -134,6 +134,8 @@ $(APP_BINARY): $(APP_SWIFT_SOURCES) App-Info.plist
 	swiftc \
 		-target "$(TARGET)" \
 		-framework Foundation \
+		-framework AppKit \
+		-framework UserNotifications \
 		-suppress-warnings \
 		$(APP_SWIFT_SOURCES) \
 		-o "$(APP_BINARY)"
@@ -219,13 +221,13 @@ build-universal: deps
 
 	@echo "→ Compiling stub app (arm64)..."
 	swiftc -target arm64-apple-macosx13.0 \
-		-framework Foundation -suppress-warnings \
+		-framework Foundation -framework AppKit -framework UserNotifications -suppress-warnings \
 		$(APP_SWIFT_SOURCES) \
 		-o "$(BUILD_DIR)/arm64/$(APP_NAME)"
 
 	@echo "→ Compiling stub app (x86_64)..."
 	swiftc -target x86_64-apple-macosx13.0 \
-		-framework Foundation -suppress-warnings \
+		-framework Foundation -framework AppKit -framework UserNotifications -suppress-warnings \
 		$(APP_SWIFT_SOURCES) \
 		-o "$(BUILD_DIR)/x86_64/$(APP_NAME)"
 

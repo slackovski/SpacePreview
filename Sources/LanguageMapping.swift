@@ -113,7 +113,6 @@ enum LanguageMapping {
             return Info(hljs: "graphql", display: "GraphQL", isMarkdown: false)
         case "proto":
             return Info(hljs: "protobuf", display: "Protobuf", isMarkdown: false)
-
         // --- DevOps ---
         case "dockerfile":
             return Info(hljs: "dockerfile", display: "Dockerfile", isMarkdown: false)
